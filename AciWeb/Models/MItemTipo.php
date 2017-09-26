@@ -3,7 +3,7 @@
 @session_start();
 $pRoot = $_SESSION['pRoot'];
 
-require_once '../Libraries/ConnectionDB.php';
+require_once '../../Libraries/ConnectionDB.php';
 
 $consult = "SELECT id_itipo, descripcion FROM aciweb.item_tipo;";
 
