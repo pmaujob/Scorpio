@@ -10,12 +10,19 @@
             <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Controllers/FileManagement/CLoadDataFiles.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/Admin/Controllers/CLogout.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Views/SyncValidate.php</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Views/dinamicForms/frmDirectories.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/Admin/Views/header.php</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/Libraries/ConnectionDB.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Class/FileManagement/DataFiles.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Models/FileManagement/MConsultUsers.php</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/Publics/css/menu.css</file>
             <file>file:/C:/xampp/htdocs/Scorpio/index.php</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Views/dinamicForms/frmConsultSync.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/Admin/Views/menu.php</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/Admin/Models/MLogout.php</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/MlBackups/Views/headerp.php</file>
             <file>file:/C:/xampp/htdocs/Scorpio/Admin/Views/js/login.js</file>
+            <file>file:/C:/xampp/htdocs/Scorpio/Publics/css/styles.css</file>
         </group>
     </open-files>
 </project-private>
