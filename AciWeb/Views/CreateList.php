@@ -1,13 +1,20 @@
+<?php
+@session_start();
+
+$pRoot = $_SESSION['pRoot'];
+$pRootHtml = $_SESSION['pRootHtml'];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Consulta de Actividades</title>
-        <?php include_once 'header.php'; ?>
-        <script type="text/javascript" src="js/forms/CreateList.js"></script>
+        <?php include_once $pRoot . '/Admin/Views/header.php'; ?>
+        <script type="text/javascript" src="<?php echo $pRootHtml . "AciWeb/Views/js/forms/CreateList.js"; ?>"></script>
     </head>
     <body onload="onLoadBody();">
-        <?php include '../Views/menu.php'; ?>
+        <?php include $pRoot . '/Admin/Views/menu.php'; ?>
         <div class="general-container">
             <form id='frmCreateList' name='frmConsultSync' enctype="multipart/form-data">
                 <div class="container-fluid">
@@ -19,9 +26,15 @@
 
                             </div>
 
-                            <div class="input-field col s12 m6 l6">
+                            <div class="input-field col s6 m4 l4">
                                 <input id="listName" type="text" class="validate">
                                 <label for="listName">Nombre de la Lista</label>
+                            </div>
+                            
+                            <div class="col s6 m2 l2">
+                                <select id="tipoList" class="browser-default">
+
+                                </select>
                             </div>
 
                             <div class="input-field col m3 l3">
@@ -31,18 +44,12 @@
                         </div>
 
                         <div class="row">
-                            <div class="col m3 l3">
+                            <div class="col s2 m4 l4">
                             </div>
 
                             <div class="input-field col s4 m3 l3">
                                 <input id="addItem" type="text" class="validate" onkeydown="addItemF(event);">
                                 <label for="addItem">Agregar Item</label>
-                            </div>
-
-                            <div class="col s4 m2 l2">
-                                <select id="itemTipoList" class="browser-default">
-
-                                </select>
                             </div>
 
                             <div class="col s4 m1 l1">
@@ -51,9 +58,9 @@
                                 </a>
                             </div>
 
-                            <div class="col m3 l3">
+                            <div class="col s2 m4 l4">
                             </div>
-                            
+
                         </div>
 
                         <div class="row">
@@ -66,8 +73,7 @@
                                     <thead>
                                         <tr>
                                             <th>No. Item</th>        
-                                            <th>Descripción</th>  
-                                            <th>Tipo</th>
+                                            <th>Descripción</th>
                                             <th>Acción</th>
                                         </tr>
                                     </thead>

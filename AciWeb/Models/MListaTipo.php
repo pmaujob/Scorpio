@@ -5,7 +5,7 @@ $pRoot = $_SESSION['pRoot'];
 
 require_once '../../Libraries/ConnectionDB.php';
 
-$consult = "SELECT id_itipo, descripcion FROM aciweb.item_tipo;";
+$consult = "SELECT id_litipo, descripcion FROM aciweb.lista_tipo;";
 
 $resTipos = new ConnectionDB();
 echo parseToJson($resTipos->consult(ConnectionDB::$MNG_PG, $consult));

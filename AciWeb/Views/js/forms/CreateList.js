@@ -5,13 +5,13 @@ function onLoadBody() {
 
     jQuery.ajax({
         type: 'POST',
-        url: '../Models/MItemTipo.php',
+        url: '../Models/MListaTipo.php',
         async: true,
         timeout: 0,
         success: function (respuesta) {
 
             var tipoArray = JSON.parse(respuesta);
-            var itemTipoList = document.getElementById('itemTipoList');
+            var itemTipoList = document.getElementById('tipoList');
 
             for (var i = 0; i < tipoArray.length; i++) {
 
@@ -39,7 +39,6 @@ function addItemF(e) {
 
     var itemList = document.getElementById('itemList');
     var addItem = document.getElementById('addItem');
-    var itemTipo = document.getElementById('itemTipoList');
 
     if (addItem.value.trim().length == 0) {
         alert('Debe ingresar un valor.');
@@ -54,14 +53,12 @@ function addItemF(e) {
     item.id = "itemRow" + idCount;
     item.innerHTML = '<td>' + (itemArray.length + 1)
             + '</td><td>' + addItem.value
-            + '</td><td>' + itemTipo.options[itemTipo.selectedIndex].text
             + '</td><td><a target="_blank" style="text-decoration: underline; cursor: pointer;" onclick="removeItem(\'' + idCount + '\');">Quitar</a></td>';
     itemList.appendChild(item);
 
     var itemRow = new Array();
     itemRow.push(idCount);
     itemRow.push(addItem.value);
-    itemRow.push(itemTipo.value);
 
     itemArray.push(itemRow);
     addItem.value = "";
@@ -89,10 +86,10 @@ function removeItem(itemPos) {
 
         var itemList = document.getElementById('itemList');
         var trs = itemList.getElementsByTagName("tr");
-        
-        for (var i = 0; i < trs.length; i++) {            
-            var tds = trs[i].getElementsByTagName("td");          
-            tds[0].innerHTML = i+1;            
+
+        for (var i = 0; i < trs.length; i++) {
+            var tds = trs[i].getElementsByTagName("td");
+            tds[0].innerHTML = i + 1;
         }
 
     }
@@ -102,18 +99,27 @@ function removeItem(itemPos) {
 function saveInfo() {
 
     var listName = document.getElementById('listName');
+    var listTipo = document.getElementById('tipoList');
 
     if (listName.value.trim().length == 0) {
         alert('Debe ingresar el nombre para nueva lista.');
         return;
     }
+
+    if (itemArray.length == 0) {
+        alert('Debe agregar al menos 1 item a la lista.');
+        return;
+    }
+
     jQuery.ajax({
         type: 'POST',
         url: '../Controllers/SaveListInfo.php',
         async: true,
         timeout: 0,
-        data: {listName: listName.value, itemArray: itemArray},
+        data: {listName: listName.value, listTipo: listTipo.value, itemArray: itemArray},
         success: function (respuesta) {
+
+            console.log(respuesta);
 
             if (respuesta == 1) {
                 alert("La lista se guardó satisfactoriamente.");
