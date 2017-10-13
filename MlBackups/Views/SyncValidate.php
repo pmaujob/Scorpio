@@ -18,30 +18,28 @@ $pRootHtml = $_SESSION['pRootHtml'];
         <?php include $pRoot . '/Admin/Views/menu.php'; ?>
         <div class="general-container">
             <form id='frmConsultSync' name='frmConsultSync' enctype="multipart/form-data">
-                <div class="container-fluid">
-                    <div class="col s12 m8 l12 center-align">
-                        <div class="row">
-                            <div class="col s12 m12 l12 center-align"><span class="lbl-style">Haga click en la lupa para ir al formulario de búsqueda</span></div>
-                            <br>
-                            <br>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m12 l12">
-                                <div class="row">
-                                    <a class="waves-effect waves-light" href="#!" onclick="openModal();">
-                                        <img id="iconSearch" src="<?php echo $pRootHtml."/Publics/images/view.png"; ?>" class="icon-search">
-                                    </a>
-                                </div>
+                <div class="col s12 m8 l12 center-align">
+                    <div class="row">
+                        <div class="col s12 m12 l12 center-align"><span class="lbl-style">Haga click en la lupa para ir al formulario de búsqueda</span></div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <a class="waves-effect waves-light" href="#!" onclick="openModal();">
+                                    <img id="iconSearch" src="<?php echo $pRootHtml . "/Publics/images/view.png"; ?>" class="icon-search">
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12 m3 l3">
-                            <!-- Espacio para centrar la tabla -->
-                        </div>
-                        <div id="userData" class="col s12 m6 l6 center-align">
+                </div>
+                <div class="row">
+                    <div class="col s12 m3 l3">
+                        <!-- Espacio para centrar la tabla -->
+                    </div>
+                    <div id="userData" class="col s12 m6 l6 center-align">
 
-                        </div>
                     </div>
                 </div>
             </form>
