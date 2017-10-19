@@ -20,6 +20,8 @@ $arrayColors = array(
 $userData = MConsultUsers::getUsers($searchValue);
 $i = 0;
 foreach ($userData as $row) {
+    if($i === 7)
+        $i = 0;
     ?>
     <li class="collection-item avatar">
         <img class="circle" style="background-color: <?php echo $arrayColors[$i]; ?>; padding: 3px;" src="<?php echo "$pRootHtml/Publics/images/inkscape/account.svg"; ?>">

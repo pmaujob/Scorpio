@@ -10,10 +10,9 @@ class MLogout {
     
     public static function logOut($idLog){
         
-        $sql = 'select from seguridad.logs_logout('.$idLog.');';
+        $consult = 'select from seguridad.logs_logout('.$idLog.');';
         
-        $con = new ConnectionDB();
-        $con->consult(ConnectionDB::$MNG_PG,$sql);
+        ConnectionDB::consult(new HostData(), $consult);
         
     }
     

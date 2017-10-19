@@ -16,7 +16,7 @@ class CLoadDataFiles {
     }
 
     public function setDataFilePasswd() {
-        
+
         try {
 
             $file = fopen("passwd", "r") or exit("Unable to open file!");
@@ -33,7 +33,7 @@ class CLoadDataFiles {
                     }
                 }
             }
-            
+
             fclose($file);
         } catch (Exception $e) {
             echo "Error: " . $e;
@@ -42,6 +42,9 @@ class CLoadDataFiles {
 
     public function recordData($area, $responsable, $ip, $account, $dir, $lastRecord, $hash, $lastIp, $directories, $deviceDirectorie, $findInfo, $findDirConf, $findUsed) {
 
+        echo MLoadDataFiles::loadDataFiles($area == null ? "'null'" : "'".$area."'", $responsable == null ? "'null'" : "'".$responsable."'", $ip == null ? "'null'" : "'".$ip."'", "'".$account."'", $dir == null ? "'null'" : "'".$dir."'", $lastRecord == null ? "'null'" : "'".$lastRecord."'", $hash == null ? "'null'" : "'".$hash."'", $lastIp == null ? "'null'" : "'".$lastIp."'", $directories == null ? "'null'" : $directories, $deviceDirectorie == null ? "'null'" : "'".$deviceDirectorie."'" , $findInfo == null ? "'null'" : "'true'", $findDirConf == null ? "'null'" : "'true'", $findUsed == null ? "'null'" : "'true'");
+
+        echo "<br>";
         echo (int) $findInfo . "info<br>";
         echo (int) $findDirConf . "dir<br>";
         echo (int) $findUsed . "used<br>";
@@ -58,17 +61,14 @@ class CLoadDataFiles {
     }
 
     public function nextData() {
-        
+
         foreach ($this->getUsers() as $row) {
 
             $dataFiles = new DataFiles();
             $dataFiles->setData($row);
-            
-            echo $row."<br>";
 
-            $this->recordData($dataFiles->getArea(), $dataFiles->getResponsable(), $dataFiles->getIpsync(), $dataFiles->getAccount(), $dataFiles->getDirectory(), $dataFiles->getLastRecord(), $dataFiles->getHash(), $dataFiles->getLastIp(), $dataFiles->getDirectoriesJson(), $dataFiles->getDirConf(), $dataFiles->getFindInfo(), $dataFiles->getFindDirConf(), $dataFiles->getFindUsed());
+            $this->recordData($dataFiles->getArea(), $dataFiles->getResponsable(), $dataFiles->getIpsync(), $row, $dataFiles->getDirectory(), $dataFiles->getLastRecord(), $dataFiles->getHash(), $dataFiles->getLastIp(), $dataFiles->getDirectoriesJson(), $dataFiles->getDirConf(), $dataFiles->getFindInfo(), $dataFiles->getFindDirConf(), $dataFiles->getFindUsed());
         }
-        
     }
 
 }
@@ -76,5 +76,4 @@ class CLoadDataFiles {
 $loadDataFiles = new CLoadDataFiles();
 $loadDataFiles->setDataFilePasswd();
 $loadDataFiles->nextData();
-
 ?>

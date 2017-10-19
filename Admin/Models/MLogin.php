@@ -20,9 +20,9 @@ class MLogin {
         
         $this->email = $email;
 
-        $sql = 'select cont from seguridad.login(' . $email . ',' . $pass . ') as ("cont" varchar);';
+        $consult = 'select cont from seguridad.login(' . $email . ',' . $pass . ') as ("cont" varchar);';
 
-        $res = $this->con->consult(ConnectionDB::$MNG_PG,$sql);
+        $res = ConnectionDB::consult(new HostData(), $consult);
 
         $response = "No";
 
@@ -32,9 +32,9 @@ class MLogin {
 
         if ($response == "Ok") {
 
-            $sql = 'select id from seguridad.ing_logs_login(' . $ip . ',' . $email . ') as ("id" integer);';
+            $consult = 'select id from seguridad.ing_logs_login(' . $ip . ',' . $email . ') as ("id" integer);';
             
-            $res = $this->con->consult(ConnectionDB::$MNG_PG,$sql);
+            $res = ConnectionDB::consult(new HostData(), $consult);
             
             while ($result = $res->fetch(PDO::FETCH_OBJ)){
                 $this->idLog = $result->id;
@@ -50,9 +50,9 @@ class MLogin {
     
     private function setDataUsers(){
         
-        $sql = 'select usuario, id from seguridad.get_datos_usuario('.$this->email.') as ("usuario" varchar, "id" varchar);';
+        $consult = 'select usuario, id from seguridad.get_datos_usuario('.$this->email.') as ("usuario" varchar, "id" varchar);';
         
-        $res = $this->con->consult(ConnectionDB::$MNG_PG,$sql);
+        $res = ConnectionDB::consult(new HostData(), $consult);
         
         while ($resultado = $res->fetch(PDO::FETCH_OBJ)){
             $this->user = $resultado->usuario;

@@ -175,57 +175,65 @@ class DataFiles {
                         $search = "AREA";
                         $resRow = strpos($strFull, $search);
 
-                        if ($resRow !== false) {
-                            $this->setArea(str_replace('=', '', stristr($strFull, '=', false)));
+                        if ($resRow !== false && !empty($strFull)) {
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setArea((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "RESPONSABLE";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setResponsable(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setResponsable((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "ipsync";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setResponsable(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setResponsable((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "cuenta";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setAccount(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setAccount((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "home";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setDirectory(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setDirectory((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "ultimoreg";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setLastRecord(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setLastRecord((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "hash";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setHash(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setHash((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
 
                         $search = "ultimaip";
                         $resRow = strpos($strFull, $search);
 
                         if ($resRow !== false) {
-                            $this->setLastIp(str_replace('=', '', stristr($strFull, '=', false)));
+                            $strFinal = str_replace('=', '', stristr($strFull, '=', false));
+                            $this->setLastIp((strlen(trim($strFinal)) !== 0) ? $strFinal : null);
                         }
                     }
 
@@ -244,8 +252,8 @@ class DataFiles {
 
                                 $str = fgets($fileUsed);
 
-                                if (strlen(trim($str)) > 0) {
-                                    $aux = array(stristr($str, '/', true), str_replace($charsToReplace,'',stristr($str,'/', false)));
+                                if (strlen(trim($str)) > 0 && !strpos($str, "total")) {
+                                    $aux = array(stristr($str, '/', true), str_replace($charsToReplace, '', stristr($str, '/', false)));
                                     $rowsUsed[] = $aux;
                                 }
                             }

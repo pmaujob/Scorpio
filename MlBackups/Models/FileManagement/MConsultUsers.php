@@ -5,6 +5,7 @@
 $pRoot = $_SESSION['pRoot'];
 
 require_once $pRoot . '/Libraries/ConnectionDB.php';
+require_once $pRoot . '/Libraries/HostData.php';
 
 class MConsultUsers {
 
@@ -21,8 +22,8 @@ class MConsultUsers {
                 . "AND ud.estado = '1' "
                 . "ORDER BY ud.responsable ASC;";
 
-        $con = new ConnectionDB();
-        return $con->consult(ConnectionDB::$MNG_PG,$consult);
+        return ConnectionDB::consult(new HostData(), $consult);
+        
     }
 
     public static function getEeudatos($idEudatos) {
@@ -42,8 +43,8 @@ class MConsultUsers {
                 . "INNER JOIN eusuarios AS us ON ud.id_eusuario = us.id_eusuario "
                 . "WHERE ud.id_eudatos = $idEudatos;";
 
-        $con = new ConnectionDB();
-        return $con->consult(ConnectionDB::$MNG_PG,$consult);
+        return ConnectionDB::consult(new HostData(), $consult);
+        
     }
 
     public static function getDirectorios($idEudatos) {
@@ -54,8 +55,7 @@ class MConsultUsers {
                 . "INNER JOIN directorios AS d ON ud.id_eudatos = d.id_eudatos "
                 . "WHERE ud.id_eudatos = $idEudatos;";
 
-        $con = new ConnectionDB();
-        return $con->consult(ConnectionDB::$MNG_PG,$consult);
+        return ConnectionDB::consult(new HostData(), $consult);
     }
 
 }

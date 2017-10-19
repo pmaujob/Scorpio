@@ -9,20 +9,19 @@ require_once $pRoot.'/libraries/SessionVars.php';
 
 class MGetMenu{
     
-    public static function getMenu($op,$idApp){
+    public static function getMenu($op,$idApp,$idMod = -1){
         
         $sess = new SessionVars();
         $user = $sess->getValue('idUser');
         
-        $sql = "";
+        $consult = "";
         
         if($op == 1)
-            $sql = 'select id, mod, fun, url from seguridad.get_menu('.$user.','.$op.','.$idApp.') as ("id" integer, "mod" varchar, "fun" varchar, "url" varchar);';
+            $consult = 'select id, mod, fun, url from seguridad.get_menu('.$user.','.$op.','.$idApp.','.$idMod.') as ("id" integer, "mod" varchar, "fun" varchar, "url" varchar);';
         else if($op == 2)
-            $sql = 'select id, mod from seguridad.get_menu('.$user.','.$op.') as ("id" integer, "mod" varchar);';
-        
-        $con = new ConnectionDB();        
-        return $con->consult(ConnectionDB::$MNG_PG,$sql);
+            $consult = 'select id, mod, unico from seguridad.get_menu('.$user.','.$op.','.$idApp.','.$idMod.') as ("id" integer, "mod" varchar, "unico" varchar);';
+               
+        return ConnectionDB::consult(new HostData(), $consult);
         
     }
     
