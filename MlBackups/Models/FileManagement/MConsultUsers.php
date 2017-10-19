@@ -11,16 +11,7 @@ class MConsultUsers {
 
     public static function getUsers($searchValue) {
 
-        $consult = "SELECT ud.id_eudatos,"//0
-                . "ud.id_eusuario,"//1
-                . "ud.responsable,"//2
-                . "a.descripcion "//3
-                . "FROM eudatos AS ud "
-                . "INNER JOIN areas AS a ON ud.id_area = a.id_area "
-                . "WHERE lower(ud.responsable) LIKE '%" . strtolower($searchValue) . "%' "
-                . "OR lower(a.descripcion) LIKE '%" . strtolower($searchValue) . "%' "
-                . "AND ud.estado = '1' "
-                . "ORDER BY ud.responsable ASC;";
+        $consult = 'select iddat, idusu, res, des from get_usuarios('.$searchValue.') as ("iddat" integer, "idusu" integer, "res" varchar, "des" varchar);';
 
         return ConnectionDB::consult(new HostData(), $consult);
         

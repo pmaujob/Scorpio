@@ -17,7 +17,8 @@ $arrayColors = array(
     "#673AB7",
     "#795548");
 
-$userData = MConsultUsers::getUsers($searchValue);
+$userData = MConsultUsers::getUsers("'$searchValue'");
+
 $i = 0;
 foreach ($userData as $row) {
     if($i === 7)
