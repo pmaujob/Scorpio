@@ -96,7 +96,6 @@ $sess = new SessionVars();
                 }
             }
         } else {
-
             echo "Este usuario no tiene acceso a ningun modulo";
         }
         ?>
