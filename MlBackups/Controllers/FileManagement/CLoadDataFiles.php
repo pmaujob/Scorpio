@@ -42,7 +42,7 @@ class CLoadDataFiles {
 
     public function recordData($area, $responsable, $ip, $account, $dir, $lastRecord, $hash, $lastIp, $directories, $deviceDirectorie, $findInfo, $findDirConf, $findUsed) {
 
-        echo MLoadDataFiles::loadDataFiles($area == null ? "'null'" : "'".$area."'", $responsable == null ? "'null'" : "'".$responsable."'", $ip == null ? "'null'" : "'".$ip."'", "'".$account."'", $dir == null ? "'null'" : "'".$dir."'", $lastRecord == null ? "'null'" : "'".$lastRecord."'", $hash == null ? "'null'" : "'".$hash."'", $lastIp == null ? "'null'" : "'".$lastIp."'", $directories == null ? "'null'" : $directories, $deviceDirectorie == null ? "'null'" : "'".$deviceDirectorie."'" , $findInfo == null ? "'null'" : "'true'", $findDirConf == null ? "'null'" : "'true'", $findUsed == null ? "'null'" : "'true'");
+        echo MLoadDataFiles::loadDataFiles($area == null ? 'NULL' : "'".$area."'", $responsable == null ? 'NULL' : "'".$responsable."'", $ip == null ? 'NULL' : "'".$ip."'", "'".$account."'", $dir == null ? 'NULL' : "'".$dir."'", $lastRecord == null ? 'NULL' : "'".$lastRecord."'", $hash == null ? 'NULL' : "'".$hash."'", $lastIp == null ? 'NULL' : "'".$lastIp."'", $directories == null ? 'NULL' : $directories, $deviceDirectorie == null ? 'NULL' : "'".$deviceDirectorie."'" , $findInfo == null ? 'NULL' : "'true'", $findDirConf == null ? 'NULL' : "'true'", $findUsed == null ? 'NULL' : "'true'");
 
         echo "<br>";
         echo (int) $findInfo . "info<br>";
